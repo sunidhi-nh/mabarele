@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="shop-page">
+
+<header>
+    <h2 class="logo">Mabarelé</h2>
+
+    <div class="cart" onclick="toggleCart()">
+        Cart (<span id="count">0</span>)
+    </div>
+</header>
+
+<!-- FILTER -->
+<section class="categories">
+    <div class="cat active" onclick="filterCategory('all', this)">ALL</div>
+    <div class="cat" onclick="filterCategory('men', this)">MEN</div>
+    <div class="cat" onclick="filterCategory('women', this)">WOMEN</div>
+    <div class="cat" onclick="filterCategory('hot', this)">HOT PICKS</div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="collection">
+
+<!-- MEN -->
+<div class="item" data-category="men">
+    
+        <img src="images/whitet.jpeg">
+        <h3>BLEED THEORY</h3>
+    </a>
+    <p>₹799</p>
+    <button>Coming Soon</button>
+</div>
+
+<div class="item" data-category="men">
+    
+        <img src="images/whites.jpeg">
+        <h3>RED VEIN</h3>
+    </a>
+    <p>₹1200</p>
+    <button>Coming Soon</button>
+</div>
+
+<!-- WOMEN -->
+<div class="item" data-category="women">
+    
+        <img src="images/cat.jpeg">
+        <h3>STALK MODE</h3>
+    </a>
+    <p>₹999</p>
+    <button>Coming Soon</button>
+</div>
+
+<div class="item" data-category="women">
+    
+        <img src="images/martini.jpeg">
+        <h3>GOLDEN HOUR MARTINI</h3>
+    </a>
+    <p>₹699</p>
+    <button>Coming Soon</button>
+</div>
+</button>
+</div>
+
+<!-- HOT PICKS -->
+<div class="item" data-category="hot">
+    
+        <img src="images/car.jpeg">
+        <h3>GLITCH INFERNO</h3>
+    </a>
+    <p>₹899</p>
+    <button>Coming Soon</button>
+</div>
+
+<div class="item" data-category="hot">
+    
+        <img src="images/man.jpeg">
+        <h3>RINGS OF CONTROL</h3>
+    </a>
+    <p>₹699</p>
+    <button>Coming Soon</button>
+</div>
+
+</section>
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cartPanel">
+
+    <div class="cart-header">
+        <h3>Your Cart</h3>
+        <span onclick="closeCart()">✕</span>
+    </div>
+
+    <div id="cartItems"></div>
+
+<div class="checkout-bar">
+    <div class="total-text">
+        Total: ₹<span id="total">0</span>
+    </div>
+
+    <button onclick="checkout()">CHECKOUT</button>
+</div>
+
+</div>
+
+<!-- POPUP -->
+<div id="cartPopup" class="cart-popup">
+    ADDED TO CART
+</div>
+
+<script src="script.js"></script>
+<div id="sizePopup" class="cart-popup">
+    SELECT A SIZE
+</div>
+
+<div id="quickAddPopup" class="quick-popup">
+
+    <div class="quick-box">
+        <span class="close" onclick="closeQuickAdd()">✕</span>
+
+        <h3 id="quickName"></h3>
+        <p id="quickPrice"></p>
+
+        <!-- SIZE -->
+        <div class="sizes">
+            <span onclick="selectQuickSize(this)">XS</span>
+            <span onclick="selectQuickSize(this)">S</span>
+            <span onclick="selectQuickSize(this)">M</span>
+            <span onclick="selectQuickSize(this)">L</span>
+        </div>
+
+        <!-- VARIANT -->
+        <div class="variants">
+            <span onclick="selectQuickVariant(this)">Oversized</span>
+            <span onclick="selectQuickVariant(this)">Hoodie</span>
+            <span onclick="selectQuickVariant(this)">Regular</span>
+        </div>
+
+        <button onclick="confirmQuickAdd()">Add to Cart</button>
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product - MABAREL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="shop-page">
+
+<header>
+    <h2>MABAREL</h2>
+    <div class="cart" onclick="toggleCart()">
+        Cart (<span id="count">0</span>)
+    </div>
+</header>
+
+
+
+<!-- CART PANEL -->
+<div id="cartPanel" class="cart-panel">
+    <h3>Your Cart</h3>
+    <span onclick="closeCart()">✕</span>
+
+    <div id="cartItems"></div>
+
+    <p>Total: ₹<span id="total">0</span></p>
+    <button class="checkout-btn" onclick="checkout()">CHECKOUT</button>
+</div>
+
+<section class="product-page">
+<div class="product-img-box">
+
+    <button class="arrow left" onclick="prevSlide()">❮</button>
+
+    <div class="product-slider">
+        <img id="img1">
+        <img id="img2">
+        <img id="img3">
+    </div>
+
+    <button class="arrow right" onclick="nextSlide()">❯</button>
+
+    <button class="size-chart-btn" onclick="openSizeChart()">Size Chart</button>
+
+</div>
+
+
+    <div class="details">
+        <p id="productDesc"></p>
+        <h1 id="productName"></h1>
+        <p id="productPrice"></p>
+    </div>
+
+    <!-- SIZES -->
+    <div class="sizes">
+        <span onclick="selectSize(this)">XS</span>
+        <span onclick="selectSize(this)">S</span>
+        <span onclick="selectSize(this)">M</span>
+        <span onclick="selectSize(this)">L</span>
+        <span onclick="selectSize(this)">XL</span>
+        <span onclick="selectSize(this)">2XL</span>
+        <span onclick="selectSize(this)">3XL</span>
+    </div>
+
+    <!-- VARIANTS -->
+<div class="variants">
+    <span onclick="selectVariant(this)">Oversized</span>
+    <span onclick="selectVariant(this)">Hoodie</span>
+    <span onclick="selectVariant(this)">Regular</span>
+</div>
+
+<!-- ADD BUTTON -->
+<button class="add-btn" onclick="addToCartFromProduct()">Add to Cart</button>
+
+</section>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+const name = params.get("name");
+const price = params.get("price");
+const img = params.get("img");
+
+// set text
+document.getElementById("productName").innerText = name;
+document.getElementById("productPrice").innerText = "₹" + price;
+
+// get image elements
+const img1 = document.getElementById("img1");
+const img2 = document.getElementById("img2");
+const img3 = document.getElementById("img3");
+
+// 👉 DEFAULT (for ALL products)
+img1.src = img;
+img2.style.display = "none";
+img3.style.display = "none";
+
+// 👉 ONLY Urban Shirt gets slider
+if (name === "Urban Shirt") {
+    img1.src = "images/shirt.png";
+    img2.src = "images/shirt2.jpeg";
+    img3.src = "images/shirt3.jpeg";
+
+    img2.style.display = "block";
+    img3.style.display = "block";
+}
+</script>
+
+<script src="script.js"></script>
+
+<div id="cartPopup" class="cart-popup">ADDED TO CART</div>
+<div id="sizePopup" class="cart-popup">SELECT A SIZE</div>
+<div id="variantPopup" class="cart-popup">SELECT A VARIANT</div>
+
+<div id="sizeChartPopup" class="size-chart-popup">
+
+    <span class="close-chart" onclick="closeSizeChart()">✕</span>
+
+    <img src="images/sizechart.jpeg" class="size-chart-img">
+
+</div>
+
+
+</body>
+</html>
